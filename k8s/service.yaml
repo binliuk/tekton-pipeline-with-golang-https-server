@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: go-https-svc 
+  name: go-https-svc
+spec:
+  type: NodePort
+  ports:
+    - name: 8443-tcp
+      port: 8443
+      targetPort: 8443
+      protocol: TCP
+  selector:
+    app: go-https

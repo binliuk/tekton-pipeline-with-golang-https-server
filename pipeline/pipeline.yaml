@@ -1,0 +1,50 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: build-and-deploy
+spec:
+  resources:
+    - name: https-repo
+      type: git
+    - name: https-image
+      type: image
+
+  tasks:
+    - name: build-go-https
+      taskRef:
+        name: buildah
+        kind: ClusterTask
+      resources:
+        inputs:
+          - name: source
+            resource: https-repo
+        outputs:
+          - name: image
+            resource: https-image
+      params:
+        - name: TLSVERIFY
+          value: "false"
+
+    - name: apply-api-manifests
+      taskRef:
+        name: apply-manifests
+      resources:
+        inputs:
+          - name: source
+            resource: https-repo
+      runAfter:
+        - build-go-https
+
+    - name: update-api-image
+      taskRef:
+        name: update-deployment
+      resources:
+        inputs:
+          - name: image
+            resource: https-image
+      params:
+        - name: deployment
+          value: "go-https"
+      runAfter:
+        - apply-api-manifests
+
