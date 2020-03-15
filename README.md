@@ -11,11 +11,11 @@ Create Tekon pipeline with a simple goland https server in Openshift 4.x
 
 #### Create project in ocp4 - `go-https-pipeline`
 
-``` create new project in OCP
-//New project:
+```sh 
+#New project:
 oc new-project go-https-pipeline
 
-//Check tekon Service account:
+#Check tekon Service account:
 
 oc get sa pipeline
 
@@ -46,11 +46,11 @@ tkn pipeline ls
 ```
 #### Trigger pipeline from cli
 ```bash
-//trigger
+#trigger
 tkn pipeline start build-and-deploy
-//track logs
+#track logs
 tkn pipelinerun logs <pipelinerun ID> -f -n pipelines-tutorial
-//retrigger pipeline
+#retrigger pipeline
 tkn pipeline start build-and-deploy --last
 
 ```
