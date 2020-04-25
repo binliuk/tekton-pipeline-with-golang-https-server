@@ -7,7 +7,7 @@ spec:
   type: git
   params:
     - name: url
-      value: https://github.com/binliuk/golang-tls.git
+      value: git@github.com:binliuk/tekton-pipeline-with-golang-https-server.git
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
@@ -17,4 +17,4 @@ spec:
   type: image
   params:
     - name: url
-      value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/go-https:latest
+      value: image-registry.openshift-image-registry.svc:5000/go-https-pipeline/go-https:latest
