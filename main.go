@@ -7,7 +7,7 @@ import (
     "log"
 )
 
-var addr = flag.String("addr", ":8443", "http service address") 
+var addr = flag.String("addr", ":8443", "http service address")
 var templ = template.Must(template.New("qr").Parse(templateStr))
 
 func HelloServer(w http.ResponseWriter, req *http.Request) {
@@ -16,7 +16,6 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	
     flag.Parse()
     http.HandleFunc("/hello", HelloServer)
     http.Handle("/", http.HandlerFunc(QR))
