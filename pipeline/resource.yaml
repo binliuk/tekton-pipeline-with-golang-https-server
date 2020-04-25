@@ -7,7 +7,8 @@ spec:
   type: git
   params:
     - name: url
-      value: git@github.com:binliuk/tekton-pipeline-with-golang-https-server.git
+      value: https://github.com/binliuk/tekton-pipeline-with-golang-https-server.git
+      #  value: git@github.com:binliuk/tekton-pipeline-with-golang-https-server.git
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
