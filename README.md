@@ -23,7 +23,7 @@ oc get sa pipeline
 #### Tekton resources — `image and git`
 
 ```Tekton and oc
-oc create -f https://raw.githubusercontent.com/binliuk/golang-tls/master/pipeline/resource.yaml
+oc create -f https://raw.githubusercontent.com/binliuk/tekton-pipeline-with-golang-https-server/master/pipeline/resource.yaml
 tkn resource ls
 
 ```
